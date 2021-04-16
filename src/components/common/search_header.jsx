@@ -1,12 +1,14 @@
-import React, { useRef, useState } from 'react';
+import React, { memo, useRef } from 'react';
 import styles from './search_header.module.css';
 
-export default function SearchHeader({ onSearch }) {
+function SearchHeader({ onSearch }) {
   const inputRef = useRef();
 
   const handleSearch = () => {
     const value = inputRef.current.value;
     onSearch(value);
+    // prop으로 받아온 onSearch, 검색이란 이벤트가 발생하면 이 전달해준 콜백함수를 불러
+    // value로 검색된 결과값 호출
   };
 
   const onClick = (e) => {
@@ -42,3 +44,5 @@ export default function SearchHeader({ onSearch }) {
     </header>
   );
 }
+
+export default memo(SearchHeader);

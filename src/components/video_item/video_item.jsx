@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styles from './video_item.module.css';
 
-export default function VideoItem({ video, onVideoClick, display }) {
+function VideoItem({ video, onVideoClick, display }) {
   const displayType = display === 'list' ? styles.list : styles.grid;
   return (
     <li
@@ -22,3 +22,6 @@ export default function VideoItem({ video, onVideoClick, display }) {
     </li>
   );
 }
+
+// videoitem은 props(video, onVideoClick, display)가 바뀌지 않으면 리렌더링 될 이유가 없음
+export default memo(VideoItem);
