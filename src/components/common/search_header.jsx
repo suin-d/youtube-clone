@@ -1,7 +1,7 @@
 import React, { memo, useRef } from 'react';
 import styles from './search_header.module.css';
 
-function SearchHeader({ onSearch }) {
+function SearchHeader({ onSearch, mostPopular }) {
   const inputRef = useRef();
 
   const handleSearch = () => {
@@ -21,12 +21,18 @@ function SearchHeader({ onSearch }) {
     }
   };
 
+
+  const onClickLogo = () => {
+    mostPopular();
+  };
+
+
   return (
     <header className={styles.header}>
-      <div className={styles.logo}>
-        <img className={styles.img} src="/images/logo.png" alt="logo" />
-        <h1 className={styles.title}>Youtube</h1>
-      </div>
+        <div className={styles.logo} onClick={onClickLogo}>
+          <img className={styles.img} src="/images/logo.png" alt="logo" />
+          <h1 className={styles.title}>YouTube</h1>
+        </div>
       <input
         className={styles.input}
         type="search"

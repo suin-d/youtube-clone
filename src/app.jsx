@@ -22,6 +22,13 @@ function App({ youtube }) {
     [youtube]
   );
 
+  const loadMostPopular = () => {
+    youtube
+      .mostPopular()
+      .then((videos) => setVideos(videos));
+      setSelectedVideo(null);
+  };
+
   useEffect(() => {
     youtube
       .mostPopular() //
@@ -33,7 +40,7 @@ function App({ youtube }) {
 
   return (
     <div className={styles.app}>
-      <SearchHeader onSearch={search} />
+      <SearchHeader onSearch={search} mostPopular={loadMostPopular}/>
       {/* onSearch가 발생하면 search 호출 */}
       <section className={styles.content}>
         {selectedVideo && (
